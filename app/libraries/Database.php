@@ -56,22 +56,22 @@ class Database{
             }
         }
 
-        $this->stmt->bindValue($param,$value,$type);
+        return  $this->stmt->bindValue($param,$value,$type);
     }
 
 
     public function execute(){
-         $this->stmt->execute();
+        return $this->stmt->execute();
     }
 
     public function resultSet(){
         $this->execute();
-        $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function single(){
         $this->execute();
-         $this->stmt->fetch(PDO::FETCH_OBJ);
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public function rowCount(){
