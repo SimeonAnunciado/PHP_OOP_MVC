@@ -6,6 +6,9 @@
 		<div class="card_body">
 			<h2>Login </h2>
 			<p>Please Fill in youre credentials to login</p>
+			
+			<?php  flash('success_register'); ?>
+
 			<form action="<?php echo URLROOT ?>/users/login" method="POST">
 
 
