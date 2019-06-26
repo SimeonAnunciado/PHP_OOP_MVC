@@ -5,6 +5,14 @@
 	<div class="container">
 		<h3><?php echo $data['title']; ?></h3>
 		<p><?php echo $data['description']; ?></p>
+
+
+		<?php 
+		foreach($_SESSION as $session ){
+			echo $session . '<br>';
+		}
+
+		?>
 	</div>	
 </div>
 

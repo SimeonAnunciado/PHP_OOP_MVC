@@ -95,13 +95,25 @@ class Users extends Controller{
 				$data['password_err'] = 'Please Enter Password';
  			}
 
+ 			if ($this->userModel->findUserByEmail($data['email'])) {
+
+ 			}else{
+ 				$data['email_err'] = 'No email found';
+ 			}
+
  			// check if all input are valid
  			if (empty($data['email_err']) && empty($data['password_err ']) ) {
- 				die('success login');
+
+ 				$loggedInUser = $this->userModel->login($data['email'],$data['password']);
+ 				if ($loggedInUser) {
+	 				$this->createUserSession($loggedInUser);
+ 				}else{
+ 					$data['password_err'] = 'Password Incorrect';
+ 					$this->view('users/login',$data);
+ 				}
  			}else{
  				$this->view('users/login',$data);
  			}
-
 
 
 		}else{
@@ -116,6 +128,25 @@ class Users extends Controller{
 			$this->view('users/login',$data);
 		}
 	}
+
+	 public function createUserSession($user){
+		$_SESSION['user_id'] = $user->id;
+		$_SESSION['user_email'] = $user->email;
+		$_SESSION['user_name'] = $user->name;
+		redirect('posts');
+	}
+
+	public function logout(){
+		unset($_SESSION['user_id']);
+		unset($_SESSION['user_email']);
+		unset($_SESSION['user_name']);
+		session_destroy();
+		redirect('users/login');
+	}
+
+
+
+
 }
 
 ?>

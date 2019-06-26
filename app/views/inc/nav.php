@@ -15,8 +15,14 @@
       <li ><a href="<?php  echo URLROOT; ?>/pages/about">About Us</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="<?php  echo URLROOT; ?>/users/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-      <li><a href="<?php  echo URLROOT; ?>/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <?php if(isset($_SESSION['user_id'])) : ?>
+        <li><a href="<?php  echo URLROOT; ?>/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <?php else : ?>
+        <li><a href="<?php  echo URLROOT; ?>/users/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li><a href="<?php  echo URLROOT; ?>/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <?php endif ?>
+
+
     </ul>
   </div>
   </div>
