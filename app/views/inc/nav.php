@@ -16,7 +16,18 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <?php if(isset($_SESSION['user_id'])) : ?>
-        <li><a href="<?php  echo URLROOT; ?>/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>  Welcome <?php echo $_SESSION['user_name']; ?>   <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-cog"></span> Account Setting</a>
+          </li>
+           <li>
+            <a href="<?php  echo URLROOT; ?>/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+          </li>
+        </ul>
+      </li>
+        
       <?php else : ?>
         <li><a href="<?php  echo URLROOT; ?>/users/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         <li><a href="<?php  echo URLROOT; ?>/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

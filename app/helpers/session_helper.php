@@ -34,4 +34,9 @@ function isLoggedIn(){
 	}
 }
 
+function Date_formater($date){
+	return date_format(date_create($date),"M d, Y h:i:s A");
+}
+
+
 ?> 

@@ -20,13 +20,13 @@
 </div>
 
 	<br><br>
-			
+	
 		<?php foreach ($data['posts'] as $post) :?>
 			<div class="well well-sm">
 				
 				<p class=""> <?php echo $post->title; ?></p>
-				<p class=""><strong>Written by </strong><?php echo $post->name; ?> On  <?php echo $post->postCreated; ?></p>
 				<p class=""> <?php echo $post->body; ?></p>
+				<p class=""><strong>Written by </strong><?php echo $post->name; ?> On  <?php echo Date_formater($post->postCreated);  ?></p>
 				<a href="<?php echo URLROOT ?>/posts/show/<?php echo $post->postId ?>" class="btn btn-sm btn-primary btn-block">More</a>
 			</div>
 			<br>
